@@ -5,7 +5,7 @@
 * Python version >= 3.6
 * **To use Noise Sparse Attention on machine translation tasks, you need to install fairseq** and develop locally:
 ```bash
-cd nsp/fairseq
+cd nsa/fairseq
 pip install --editable ./
 ```
 
