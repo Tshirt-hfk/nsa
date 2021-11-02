@@ -1,0 +1,360 @@
+Namespace(activation_dropout=0.0, activation_fn='relu', adam_betas='(0.9, 0.98)', adam_eps=1e-08, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, arch='transformer_iwslt_de_en', attention_dropout=0.0, best_checkpoint_metric='loss', bucket_cap_mb=25, clip_norm=25, cpu=False, criterion='label_smoothed_cross_entropy', curriculum=0, data='data-bin/iwslt14.tokenized.de-en', dataset_impl='cached', ddp_backend='c10d', decoder_attention_heads=4, decoder_embed_dim=512, decoder_embed_path=None, decoder_ffn_embed_dim=1024, decoder_input_dim=512, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=False, decoder_output_dim=512, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, dropout=0.3, encoder_attention_heads=4, encoder_embed_dim=512, encoder_embed_path=None, encoder_ffn_embed_dim=1024, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=False, exp_root=0.5, find_unused_parameters=False, fix_batches_to_gpus=False, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, lazy_load=False, left_pad_source='True', left_pad_target='False', log_format='json', log_interval=1000, lr=[0.0005], lr_scheduler='inverse_sqrt', max_epoch=0, max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=5000, max_tokens_valid=5000, max_update=60000, maximize_best_checkpoint_metric=False, memory_efficient_fp16=False, min_loss_scale=0.0001, min_lr=1e-09, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=True, no_save=False, no_save_optimizer_state=False, no_token_positional_embeddings=False, num_workers=0, optimizer='adam', optimizer_overrides='{}', raw_text=False, required_batch_size_multiple=8, reset_dataloader=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='checkpoints/iwslt_d2_wo', save_interval=1, save_interval_updates=0, seed=1, sentence_avg=False, share_all_embeddings=False, share_decoder_input_output_embed=True, skip_invalid_size_inputs_valid_test=False, source_lang='de', target_lang='en', task='translation', tbmf_wrapper=False, tensorboard_logdir='', threshold_loss_scale=None, train_subset='train', update_freq=[1], upsample_primary=1, use_bmuf=False, user_dir=None, valid_subset='valid', validate_interval=1, warmup_init_lr=1e-07, warmup_updates=4000, weight_decay=0.0001)
+| [de] dictionary: 8848 types
+| [en] dictionary: 6632 types
+| data-bin/iwslt14.tokenized.de-en valid de-en 7283 examples
+TransformerModel(
+  (encoder): TransformerEncoder(
+    (embed_tokens): Embedding(8848, 512, padding_idx=1)
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+    )
+  )
+  (decoder): TransformerDecoder(
+    (embed_tokens): Embedding(6632, 512, padding_idx=1)
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=1024, bias=True)
+        (fc2): Linear(in_features=1024, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm(torch.Size([512]), eps=1e-05, elementwise_affine=True)
+      )
+    )
+  )
+)
+| model transformer_iwslt_de_en, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 39469056 (num. trained: 39469056)
+| training on 1 GPUs
+| max tokens per GPU = 5000 and max sentences per GPU = None
+| no existing checkpoint found checkpoints/iwslt_d2_wo/checkpoint_last.pt
+| loading train data for epoch 0
+| data-bin/iwslt14.tokenized.de-en train de-en 160239 examples
+| NOTICE: your device may support faster training with --fp16
+{"epoch": 1, "train_loss": "9.771", "train_nll_loss": "9.281", "train_ppl": "621.98", "train_wps": "21415", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "903", "train_lr": "0.000112952", "train_gnorm": "1.660", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "186", "train_train_wall": "162"}
+{"epoch": 1, "valid_loss": "8.524", "valid_nll_loss": "7.785", "valid_ppl": "220.61", "valid_num_updates": "903"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint1.pt (epoch 1 @ 903 updates) (writing took 1.1234931945800781 seconds)
+{"epoch": 2, "train_loss": "8.215", "train_nll_loss": "7.467", "train_ppl": "176.93", "train_wps": "21817", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "1806", "train_lr": "0.000225805", "train_gnorm": "1.305", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "371", "train_train_wall": "322"}
+{"epoch": 2, "valid_loss": "7.734", "valid_nll_loss": "6.860", "valid_ppl": "116.15", "valid_num_updates": "1806", "valid_best_loss": "7.73413"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint2.pt (epoch 2 @ 1806 updates) (writing took 3.096980333328247 seconds)
+{"epoch": 3, "train_loss": "7.620", "train_nll_loss": "6.774", "train_ppl": "109.47", "train_wps": "21831", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "2709", "train_lr": "0.000338657", "train_gnorm": "1.116", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "558", "train_train_wall": "482"}
+{"epoch": 3, "valid_loss": "7.339", "valid_nll_loss": "6.379", "valid_ppl": "83.24", "valid_num_updates": "2709", "valid_best_loss": "7.33914"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint3.pt (epoch 3 @ 2709 updates) (writing took 3.233731508255005 seconds)
+{"epoch": 4, "train_loss": "7.087", "train_nll_loss": "6.156", "train_ppl": "71.31", "train_wps": "21292", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "3612", "train_lr": "0.00045151", "train_gnorm": "1.091", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "749", "train_train_wall": "646"}
+{"epoch": 4, "valid_loss": "6.538", "valid_nll_loss": "5.451", "valid_ppl": "43.74", "valid_num_updates": "3612", "valid_best_loss": "6.53796"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint4.pt (epoch 4 @ 3612 updates) (writing took 3.0901639461517334 seconds)
+{"epoch": 5, "train_loss": "6.436", "train_nll_loss": "5.399", "train_ppl": "42.20", "train_wps": "21820", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "4515", "train_lr": "0.000470621", "train_gnorm": "1.145", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "936", "train_train_wall": "806"}
+{"epoch": 5, "valid_loss": "5.881", "valid_nll_loss": "4.664", "valid_ppl": "25.35", "valid_num_updates": "4515", "valid_best_loss": "5.88102"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint5.pt (epoch 5 @ 4515 updates) (writing took 3.171539783477783 seconds)
+{"epoch": 6, "train_loss": "5.818", "train_nll_loss": "4.680", "train_ppl": "25.63", "train_wps": "21808", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "5418", "train_lr": "0.000429616", "train_gnorm": "1.109", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "1123", "train_train_wall": "966"}
+{"epoch": 6, "valid_loss": "5.357", "valid_nll_loss": "4.020", "valid_ppl": "16.22", "valid_num_updates": "5418", "valid_best_loss": "5.3566"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint6.pt (epoch 6 @ 5418 updates) (writing took 3.3139426708221436 seconds)
+{"epoch": 7, "train_loss": "5.337", "train_nll_loss": "4.121", "train_ppl": "17.39", "train_wps": "21801", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "6321", "train_lr": "0.000397747", "train_gnorm": "1.046", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "1310", "train_train_wall": "1127"}
+{"epoch": 7, "valid_loss": "4.968", "valid_nll_loss": "3.576", "valid_ppl": "11.92", "valid_num_updates": "6321", "valid_best_loss": "4.96754"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint7.pt (epoch 7 @ 6321 updates) (writing took 3.1048033237457275 seconds)
+{"epoch": 8, "train_loss": "4.996", "train_nll_loss": "3.727", "train_ppl": "13.24", "train_wps": "21820", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "7224", "train_lr": "0.000372058", "train_gnorm": "1.010", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "1497", "train_train_wall": "1287"}
+{"epoch": 8, "valid_loss": "4.718", "valid_nll_loss": "3.281", "valid_ppl": "9.72", "valid_num_updates": "7224", "valid_best_loss": "4.71752"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint8.pt (epoch 8 @ 7224 updates) (writing took 3.104375123977661 seconds)
+{"epoch": 9, "train_loss": "4.757", "train_nll_loss": "3.453", "train_ppl": "10.95", "train_wps": "21826", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "8127", "train_lr": "0.00035078", "train_gnorm": "0.976", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "1684", "train_train_wall": "1447"}
+{"epoch": 9, "valid_loss": "4.570", "valid_nll_loss": "3.103", "valid_ppl": "8.59", "valid_num_updates": "8127", "valid_best_loss": "4.57043"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint9.pt (epoch 9 @ 8127 updates) (writing took 3.117274522781372 seconds)
+{"epoch": 10, "train_loss": "4.576", "train_nll_loss": "3.246", "train_ppl": "9.49", "train_wps": "21895", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "9030", "train_lr": "0.000332779", "train_gnorm": "0.945", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "1870", "train_train_wall": "1606"}
+{"epoch": 10, "valid_loss": "4.430", "valid_nll_loss": "2.949", "valid_ppl": "7.72", "valid_num_updates": "9030", "valid_best_loss": "4.42986"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint10.pt (epoch 10 @ 9030 updates) (writing took 2.9488775730133057 seconds)
+{"epoch": 11, "train_loss": "4.438", "train_nll_loss": "3.091", "train_ppl": "8.52", "train_wps": "21937", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "9933", "train_lr": "0.000317292", "train_gnorm": "0.926", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2056", "train_train_wall": "1766"}
+{"epoch": 11, "valid_loss": "4.362", "valid_nll_loss": "2.870", "valid_ppl": "7.31", "valid_num_updates": "9933", "valid_best_loss": "4.36166"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint11.pt (epoch 11 @ 9933 updates) (writing took 3.1008036136627197 seconds)
+{"epoch": 12, "train_loss": "4.329", "train_nll_loss": "2.967", "train_ppl": "7.82", "train_wps": "21886", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "10836", "train_lr": "0.000303784", "train_gnorm": "0.904", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2242", "train_train_wall": "1926"}
+{"epoch": 12, "valid_loss": "4.269", "valid_nll_loss": "2.776", "valid_ppl": "6.85", "valid_num_updates": "10836", "valid_best_loss": "4.26923"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint12.pt (epoch 12 @ 10836 updates) (writing took 3.101323366165161 seconds)
+{"epoch": 13, "train_loss": "4.233", "train_nll_loss": "2.860", "train_ppl": "7.26", "train_wps": "21892", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "11739", "train_lr": "0.000291867", "train_gnorm": "0.887", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2428", "train_train_wall": "2085"}
+{"epoch": 13, "valid_loss": "4.231", "valid_nll_loss": "2.719", "valid_ppl": "6.58", "valid_num_updates": "11739", "valid_best_loss": "4.23127"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint13.pt (epoch 13 @ 11739 updates) (writing took 3.1013805866241455 seconds)
+{"epoch": 14, "train_loss": "4.157", "train_nll_loss": "2.774", "train_ppl": "6.84", "train_wps": "21901", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "12642", "train_lr": "0.00028125", "train_gnorm": "0.876", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2615", "train_train_wall": "2245"}
+{"epoch": 14, "valid_loss": "4.181", "valid_nll_loss": "2.662", "valid_ppl": "6.33", "valid_num_updates": "12642", "valid_best_loss": "4.18141"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint14.pt (epoch 14 @ 12642 updates) (writing took 3.1588568687438965 seconds)
+{"epoch": 15, "train_loss": "4.087", "train_nll_loss": "2.694", "train_ppl": "6.47", "train_wps": "22081", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "13545", "train_lr": "0.000271713", "train_gnorm": "0.860", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2799", "train_train_wall": "2404"}
+{"epoch": 15, "valid_loss": "4.146", "valid_nll_loss": "2.622", "valid_ppl": "6.15", "valid_num_updates": "13545", "valid_best_loss": "4.14649"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint15.pt (epoch 15 @ 13545 updates) (writing took 3.1094088554382324 seconds)
+{"epoch": 16, "train_loss": "4.030", "train_nll_loss": "2.630", "train_ppl": "6.19", "train_wps": "22066", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "14448", "train_lr": "0.000263085", "train_gnorm": "0.856", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "2984", "train_train_wall": "2563"}
+{"epoch": 16, "valid_loss": "4.101", "valid_nll_loss": "2.578", "valid_ppl": "5.97", "valid_num_updates": "14448", "valid_best_loss": "4.1008"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint16.pt (epoch 16 @ 14448 updates) (writing took 3.167530059814453 seconds)
+{"epoch": 17, "train_loss": "3.978", "train_nll_loss": "2.572", "train_ppl": "5.95", "train_wps": "22070", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "15351", "train_lr": "0.00025523", "train_gnorm": "0.853", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "3169", "train_train_wall": "2723"}
+{"epoch": 17, "valid_loss": "4.097", "valid_nll_loss": "2.564", "valid_ppl": "5.91", "valid_num_updates": "15351", "valid_best_loss": "4.09739"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint17.pt (epoch 17 @ 15351 updates) (writing took 3.1023569107055664 seconds)
+{"epoch": 18, "train_loss": "3.931", "train_nll_loss": "2.519", "train_ppl": "5.73", "train_wps": "22118", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "16254", "train_lr": "0.000248039", "train_gnorm": "0.846", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "3353", "train_train_wall": "2882"}
+{"epoch": 18, "valid_loss": "4.047", "valid_nll_loss": "2.517", "valid_ppl": "5.72", "valid_num_updates": "16254", "valid_best_loss": "4.04691"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint18.pt (epoch 18 @ 16254 updates) (writing took 3.0875988006591797 seconds)
+{"epoch": 19, "train_loss": "3.888", "train_nll_loss": "2.470", "train_ppl": "5.54", "train_wps": "22120", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "17157", "train_lr": "0.000241423", "train_gnorm": "0.841", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "3538", "train_train_wall": "3041"}
+{"epoch": 19, "valid_loss": "4.045", "valid_nll_loss": "2.511", "valid_ppl": "5.70", "valid_num_updates": "17157", "valid_best_loss": "4.0452"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint19.pt (epoch 19 @ 17157 updates) (writing took 3.102905035018921 seconds)
+{"epoch": 20, "train_loss": "3.848", "train_nll_loss": "2.425", "train_ppl": "5.37", "train_wps": "22091", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "18060", "train_lr": "0.00023531", "train_gnorm": "0.837", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "3722", "train_train_wall": "3200"}
+{"epoch": 20, "valid_loss": "4.014", "valid_nll_loss": "2.474", "valid_ppl": "5.56", "valid_num_updates": "18060", "valid_best_loss": "4.01416"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint20.pt (epoch 20 @ 18060 updates) (writing took 3.1021735668182373 seconds)
+{"epoch": 21, "train_loss": "3.812", "train_nll_loss": "2.384", "train_ppl": "5.22", "train_wps": "22115", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "18963", "train_lr": "0.000229639", "train_gnorm": "0.833", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "3907", "train_train_wall": "3359"}
+{"epoch": 21, "valid_loss": "4.006", "valid_nll_loss": "2.467", "valid_ppl": "5.53", "valid_num_updates": "18963", "valid_best_loss": "4.00575"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint21.pt (epoch 21 @ 18963 updates) (writing took 3.1720800399780273 seconds)
+{"epoch": 22, "train_loss": "3.779", "train_nll_loss": "2.347", "train_ppl": "5.09", "train_wps": "22118", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "19866", "train_lr": "0.00022436", "train_gnorm": "0.833", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "4091", "train_train_wall": "3518"}
+{"epoch": 22, "valid_loss": "3.980", "valid_nll_loss": "2.437", "valid_ppl": "5.41", "valid_num_updates": "19866", "valid_best_loss": "3.97969"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint22.pt (epoch 22 @ 19866 updates) (writing took 3.0939385890960693 seconds)
+{"epoch": 23, "train_loss": "3.746", "train_nll_loss": "2.310", "train_ppl": "4.96", "train_wps": "22114", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "20769", "train_lr": "0.000219428", "train_gnorm": "0.827", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "4276", "train_train_wall": "3677"}
+{"epoch": 23, "valid_loss": "3.980", "valid_nll_loss": "2.435", "valid_ppl": "5.41", "valid_num_updates": "20769", "valid_best_loss": "3.97969"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint23.pt (epoch 23 @ 20769 updates) (writing took 1.7084619998931885 seconds)
+{"epoch": 24, "train_loss": "3.718", "train_nll_loss": "2.278", "train_ppl": "4.85", "train_wps": "22116", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "21672", "train_lr": "0.000214808", "train_gnorm": "0.831", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "4459", "train_train_wall": "3836"}
+{"epoch": 24, "valid_loss": "3.962", "valid_nll_loss": "2.413", "valid_ppl": "5.33", "valid_num_updates": "21672", "valid_best_loss": "3.96172"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint24.pt (epoch 24 @ 21672 updates) (writing took 3.1008100509643555 seconds)
+{"epoch": 25, "train_loss": "3.690", "train_nll_loss": "2.246", "train_ppl": "4.74", "train_wps": "22120", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "22575", "train_lr": "0.000210468", "train_gnorm": "0.825", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "4643", "train_train_wall": "3995"}
+{"epoch": 25, "valid_loss": "3.979", "valid_nll_loss": "2.429", "valid_ppl": "5.38", "valid_num_updates": "22575", "valid_best_loss": "3.96172"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint25.pt (epoch 25 @ 22575 updates) (writing took 1.7163710594177246 seconds)
+{"epoch": 26, "train_loss": "3.663", "train_nll_loss": "2.216", "train_ppl": "4.65", "train_wps": "22103", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "23478", "train_lr": "0.000206381", "train_gnorm": "0.825", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "4826", "train_train_wall": "4154"}
+{"epoch": 26, "valid_loss": "3.935", "valid_nll_loss": "2.388", "valid_ppl": "5.23", "valid_num_updates": "23478", "valid_best_loss": "3.93452"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint26.pt (epoch 26 @ 23478 updates) (writing took 3.102827548980713 seconds)
+{"epoch": 27, "train_loss": "3.640", "train_nll_loss": "2.189", "train_ppl": "4.56", "train_wps": "22102", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "24381", "train_lr": "0.000202523", "train_gnorm": "0.826", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5011", "train_train_wall": "4313"}
+{"epoch": 27, "valid_loss": "3.955", "valid_nll_loss": "2.406", "valid_ppl": "5.30", "valid_num_updates": "24381", "valid_best_loss": "3.93452"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint27.pt (epoch 27 @ 24381 updates) (writing took 1.7090747356414795 seconds)
+{"epoch": 28, "train_loss": "3.616", "train_nll_loss": "2.162", "train_ppl": "4.47", "train_wps": "22127", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "25284", "train_lr": "0.000198874", "train_gnorm": "0.827", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5193", "train_train_wall": "4472"}
+{"epoch": 28, "valid_loss": "3.921", "valid_nll_loss": "2.375", "valid_ppl": "5.19", "valid_num_updates": "25284", "valid_best_loss": "3.92057"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint28.pt (epoch 28 @ 25284 updates) (writing took 3.1001882553100586 seconds)
+{"epoch": 29, "train_loss": "3.594", "train_nll_loss": "2.137", "train_ppl": "4.40", "train_wps": "22119", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "26187", "train_lr": "0.000195415", "train_gnorm": "0.823", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5378", "train_train_wall": "4631"}
+{"epoch": 29, "valid_loss": "3.935", "valid_nll_loss": "2.383", "valid_ppl": "5.22", "valid_num_updates": "26187", "valid_best_loss": "3.92057"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint29.pt (epoch 29 @ 26187 updates) (writing took 1.7063884735107422 seconds)
+{"epoch": 30, "train_loss": "3.575", "train_nll_loss": "2.114", "train_ppl": "4.33", "train_wps": "22149", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "27090", "train_lr": "0.00019213", "train_gnorm": "0.827", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5560", "train_train_wall": "4789"}
+{"epoch": 30, "valid_loss": "3.910", "valid_nll_loss": "2.355", "valid_ppl": "5.12", "valid_num_updates": "27090", "valid_best_loss": "3.91021"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint30.pt (epoch 30 @ 27090 updates) (writing took 3.0669994354248047 seconds)
+{"epoch": 31, "train_loss": "3.555", "train_nll_loss": "2.092", "train_ppl": "4.26", "train_wps": "22141", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "27993", "train_lr": "0.000189006", "train_gnorm": "0.829", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5745", "train_train_wall": "4948"}
+{"epoch": 31, "valid_loss": "3.905", "valid_nll_loss": "2.352", "valid_ppl": "5.11", "valid_num_updates": "27993", "valid_best_loss": "3.90455"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint31.pt (epoch 31 @ 27993 updates) (writing took 3.1075832843780518 seconds)
+{"epoch": 32, "train_loss": "3.535", "train_nll_loss": "2.069", "train_ppl": "4.20", "train_wps": "22127", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "28896", "train_lr": "0.000186029", "train_gnorm": "0.829", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "5929", "train_train_wall": "5107"}
+{"epoch": 32, "valid_loss": "3.915", "valid_nll_loss": "2.358", "valid_ppl": "5.13", "valid_num_updates": "28896", "valid_best_loss": "3.90455"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint32.pt (epoch 32 @ 28896 updates) (writing took 1.7271640300750732 seconds)
+{"epoch": 33, "train_loss": "3.518", "train_nll_loss": "2.050", "train_ppl": "4.14", "train_wps": "22105", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "29799", "train_lr": "0.000183189", "train_gnorm": "0.831", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "6112", "train_train_wall": "5266"}
+{"epoch": 33, "valid_loss": "3.909", "valid_nll_loss": "2.353", "valid_ppl": "5.11", "valid_num_updates": "29799", "valid_best_loss": "3.90455"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint33.pt (epoch 33 @ 29799 updates) (writing took 1.7066233158111572 seconds)
+{"epoch": 34, "train_loss": "3.501", "train_nll_loss": "2.030", "train_ppl": "4.09", "train_wps": "22109", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "30702", "train_lr": "0.000180475", "train_gnorm": "0.833", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "6295", "train_train_wall": "5425"}
+{"epoch": 34, "valid_loss": "3.907", "valid_nll_loss": "2.350", "valid_ppl": "5.10", "valid_num_updates": "30702", "valid_best_loss": "3.90455"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint34.pt (epoch 34 @ 30702 updates) (writing took 1.70839524269104 seconds)
+{"epoch": 35, "train_loss": "3.483", "train_nll_loss": "2.010", "train_ppl": "4.03", "train_wps": "22160", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "31605", "train_lr": "0.000177878", "train_gnorm": "0.828", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "6478", "train_train_wall": "5584"}
+{"epoch": 35, "valid_loss": "3.891", "valid_nll_loss": "2.333", "valid_ppl": "5.04", "valid_num_updates": "31605", "valid_best_loss": "3.89123"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint35.pt (epoch 35 @ 31605 updates) (writing took 3.097903251647949 seconds)
+{"epoch": 36, "train_loss": "3.467", "train_nll_loss": "1.991", "train_ppl": "3.98", "train_wps": "22119", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "32508", "train_lr": "0.00017539", "train_gnorm": "0.832", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "6662", "train_train_wall": "5743"}
+{"epoch": 36, "valid_loss": "3.883", "valid_nll_loss": "2.327", "valid_ppl": "5.02", "valid_num_updates": "32508", "valid_best_loss": "3.88262"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint36.pt (epoch 36 @ 32508 updates) (writing took 3.095633029937744 seconds)
+{"epoch": 37, "train_loss": "3.452", "train_nll_loss": "1.974", "train_ppl": "3.93", "train_wps": "22131", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "33411", "train_lr": "0.000173004", "train_gnorm": "0.834", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "6846", "train_train_wall": "5902"}
+{"epoch": 37, "valid_loss": "3.900", "valid_nll_loss": "2.339", "valid_ppl": "5.06", "valid_num_updates": "33411", "valid_best_loss": "3.88262"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint37.pt (epoch 37 @ 33411 updates) (writing took 1.706916332244873 seconds)
+{"epoch": 38, "train_loss": "3.437", "train_nll_loss": "1.957", "train_ppl": "3.88", "train_wps": "22136", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "34314", "train_lr": "0.000170712", "train_gnorm": "0.835", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7029", "train_train_wall": "6061"}
+{"epoch": 38, "valid_loss": "3.901", "valid_nll_loss": "2.342", "valid_ppl": "5.07", "valid_num_updates": "34314", "valid_best_loss": "3.88262"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint38.pt (epoch 38 @ 34314 updates) (writing took 1.7180275917053223 seconds)
+{"epoch": 39, "train_loss": "3.423", "train_nll_loss": "1.941", "train_ppl": "3.84", "train_wps": "22122", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "35217", "train_lr": "0.000168509", "train_gnorm": "0.836", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7212", "train_train_wall": "6220"}
+{"epoch": 39, "valid_loss": "3.894", "valid_nll_loss": "2.337", "valid_ppl": "5.05", "valid_num_updates": "35217", "valid_best_loss": "3.88262"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint39.pt (epoch 39 @ 35217 updates) (writing took 1.704643726348877 seconds)
+{"epoch": 40, "train_loss": "3.408", "train_nll_loss": "1.923", "train_ppl": "3.79", "train_wps": "22116", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "36120", "train_lr": "0.00016639", "train_gnorm": "0.835", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7395", "train_train_wall": "6379"}
+{"epoch": 40, "valid_loss": "3.882", "valid_nll_loss": "2.325", "valid_ppl": "5.01", "valid_num_updates": "36120", "valid_best_loss": "3.88218"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint40.pt (epoch 40 @ 36120 updates) (writing took 3.0862021446228027 seconds)
+{"epoch": 41, "train_loss": "3.396", "train_nll_loss": "1.909", "train_ppl": "3.76", "train_wps": "22144", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "37023", "train_lr": "0.000164348", "train_gnorm": "0.837", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7579", "train_train_wall": "6537"}
+{"epoch": 41, "valid_loss": "3.870", "valid_nll_loss": "2.315", "valid_ppl": "4.98", "valid_num_updates": "37023", "valid_best_loss": "3.87023"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint41.pt (epoch 41 @ 37023 updates) (writing took 3.093465566635132 seconds)
+{"epoch": 42, "train_loss": "3.383", "train_nll_loss": "1.894", "train_ppl": "3.72", "train_wps": "22113", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "37926", "train_lr": "0.00016238", "train_gnorm": "0.842", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7764", "train_train_wall": "6696"}
+{"epoch": 42, "valid_loss": "3.879", "valid_nll_loss": "2.321", "valid_ppl": "5.00", "valid_num_updates": "37926", "valid_best_loss": "3.87023"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint42.pt (epoch 42 @ 37926 updates) (writing took 1.7168936729431152 seconds)
+{"epoch": 43, "train_loss": "3.369", "train_nll_loss": "1.879", "train_ppl": "3.68", "train_wps": "22136", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "38829", "train_lr": "0.00016048", "train_gnorm": "0.843", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "7946", "train_train_wall": "6855"}
+{"epoch": 43, "valid_loss": "3.863", "valid_nll_loss": "2.307", "valid_ppl": "4.95", "valid_num_updates": "38829", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint43.pt (epoch 43 @ 38829 updates) (writing took 3.1217641830444336 seconds)
+{"epoch": 44, "train_loss": "3.357", "train_nll_loss": "1.865", "train_ppl": "3.64", "train_wps": "22123", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "39732", "train_lr": "0.000158646", "train_gnorm": "0.845", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "8131", "train_train_wall": "7014"}
+{"epoch": 44, "valid_loss": "3.869", "valid_nll_loss": "2.308", "valid_ppl": "4.95", "valid_num_updates": "39732", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint44.pt (epoch 44 @ 39732 updates) (writing took 1.7084417343139648 seconds)
+{"epoch": 45, "train_loss": "3.345", "train_nll_loss": "1.851", "train_ppl": "3.61", "train_wps": "22138", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "40635", "train_lr": "0.000156874", "train_gnorm": "0.850", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "8313", "train_train_wall": "7173"}
+{"epoch": 45, "valid_loss": "3.876", "valid_nll_loss": "2.316", "valid_ppl": "4.98", "valid_num_updates": "40635", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint45.pt (epoch 45 @ 40635 updates) (writing took 1.706843614578247 seconds)
+{"epoch": 46, "train_loss": "3.333", "train_nll_loss": "1.836", "train_ppl": "3.57", "train_wps": "22180", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "41538", "train_lr": "0.000155159", "train_gnorm": "0.847", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "8496", "train_train_wall": "7332"}
+{"epoch": 46, "valid_loss": "3.867", "valid_nll_loss": "2.306", "valid_ppl": "4.94", "valid_num_updates": "41538", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint46.pt (epoch 46 @ 41538 updates) (writing took 1.7049105167388916 seconds)
+{"epoch": 47, "train_loss": "3.322", "train_nll_loss": "1.825", "train_ppl": "3.54", "train_wps": "22136", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "42441", "train_lr": "0.0001535", "train_gnorm": "0.854", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "8679", "train_train_wall": "7491"}
+{"epoch": 47, "valid_loss": "3.872", "valid_nll_loss": "2.312", "valid_ppl": "4.97", "valid_num_updates": "42441", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint47.pt (epoch 47 @ 42441 updates) (writing took 1.724776029586792 seconds)
+{"epoch": 48, "train_loss": "3.311", "train_nll_loss": "1.811", "train_ppl": "3.51", "train_wps": "22119", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "43344", "train_lr": "0.000151892", "train_gnorm": "0.851", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "8862", "train_train_wall": "7650"}
+{"epoch": 48, "valid_loss": "3.878", "valid_nll_loss": "2.314", "valid_ppl": "4.97", "valid_num_updates": "43344", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint48.pt (epoch 48 @ 43344 updates) (writing took 1.7100985050201416 seconds)
+{"epoch": 49, "train_loss": "3.301", "train_nll_loss": "1.800", "train_ppl": "3.48", "train_wps": "22127", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "44247", "train_lr": "0.000150334", "train_gnorm": "0.854", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9045", "train_train_wall": "7809"}
+{"epoch": 49, "valid_loss": "3.865", "valid_nll_loss": "2.307", "valid_ppl": "4.95", "valid_num_updates": "44247", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint49.pt (epoch 49 @ 44247 updates) (writing took 1.7086477279663086 seconds)
+{"epoch": 50, "train_loss": "3.290", "train_nll_loss": "1.787", "train_ppl": "3.45", "train_wps": "22114", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "45150", "train_lr": "0.000148823", "train_gnorm": "0.854", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9228", "train_train_wall": "7968"}
+{"epoch": 50, "valid_loss": "3.864", "valid_nll_loss": "2.308", "valid_ppl": "4.95", "valid_num_updates": "45150", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint50.pt (epoch 50 @ 45150 updates) (writing took 1.7117619514465332 seconds)
+{"epoch": 51, "train_loss": "3.280", "train_nll_loss": "1.775", "train_ppl": "3.42", "train_wps": "22139", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "46053", "train_lr": "0.000147357", "train_gnorm": "0.858", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9410", "train_train_wall": "8127"}
+{"epoch": 51, "valid_loss": "3.863", "valid_nll_loss": "2.305", "valid_ppl": "4.94", "valid_num_updates": "46053", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint51.pt (epoch 51 @ 46053 updates) (writing took 1.712484359741211 seconds)
+{"epoch": 52, "train_loss": "3.270", "train_nll_loss": "1.764", "train_ppl": "3.40", "train_wps": "22131", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "46956", "train_lr": "0.000145933", "train_gnorm": "0.860", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9593", "train_train_wall": "8286"}
+{"epoch": 52, "valid_loss": "3.873", "valid_nll_loss": "2.311", "valid_ppl": "4.96", "valid_num_updates": "46956", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint52.pt (epoch 52 @ 46956 updates) (writing took 1.7116246223449707 seconds)
+{"epoch": 53, "train_loss": "3.260", "train_nll_loss": "1.752", "train_ppl": "3.37", "train_wps": "22165", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "47859", "train_lr": "0.00014455", "train_gnorm": "0.864", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9776", "train_train_wall": "8444"}
+{"epoch": 53, "valid_loss": "3.865", "valid_nll_loss": "2.306", "valid_ppl": "4.95", "valid_num_updates": "47859", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint53.pt (epoch 53 @ 47859 updates) (writing took 1.7104017734527588 seconds)
+{"epoch": 54, "train_loss": "3.251", "train_nll_loss": "1.742", "train_ppl": "3.34", "train_wps": "22129", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "48762", "train_lr": "0.000143205", "train_gnorm": "0.865", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "9959", "train_train_wall": "8603"}
+{"epoch": 54, "valid_loss": "3.866", "valid_nll_loss": "2.308", "valid_ppl": "4.95", "valid_num_updates": "48762", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint54.pt (epoch 54 @ 48762 updates) (writing took 1.7087023258209229 seconds)
+{"epoch": 55, "train_loss": "3.242", "train_nll_loss": "1.731", "train_ppl": "3.32", "train_wps": "22130", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "49665", "train_lr": "0.000141898", "train_gnorm": "0.868", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "10142", "train_train_wall": "8762"}
+{"epoch": 55, "valid_loss": "3.868", "valid_nll_loss": "2.310", "valid_ppl": "4.96", "valid_num_updates": "49665", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint55.pt (epoch 55 @ 49665 updates) (writing took 1.7130439281463623 seconds)
+{"epoch": 56, "train_loss": "3.232", "train_nll_loss": "1.720", "train_ppl": "3.29", "train_wps": "22139", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "50568", "train_lr": "0.000140625", "train_gnorm": "0.870", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "10324", "train_train_wall": "8921"}
+{"epoch": 56, "valid_loss": "3.866", "valid_nll_loss": "2.307", "valid_ppl": "4.95", "valid_num_updates": "50568", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint56.pt (epoch 56 @ 50568 updates) (writing took 1.7086701393127441 seconds)
+{"epoch": 57, "train_loss": "3.224", "train_nll_loss": "1.710", "train_ppl": "3.27", "train_wps": "22136", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "51471", "train_lr": "0.000139386", "train_gnorm": "0.872", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "10507", "train_train_wall": "9080"}
+{"epoch": 57, "valid_loss": "3.866", "valid_nll_loss": "2.304", "valid_ppl": "4.94", "valid_num_updates": "51471", "valid_best_loss": "3.86265"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint57.pt (epoch 57 @ 51471 updates) (writing took 1.7099909782409668 seconds)
+{"epoch": 58, "train_loss": "3.215", "train_nll_loss": "1.700", "train_ppl": "3.25", "train_wps": "22151", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "52374", "train_lr": "0.000138179", "train_gnorm": "0.871", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "10690", "train_train_wall": "9239"}
+{"epoch": 58, "valid_loss": "3.863", "valid_nll_loss": "2.304", "valid_ppl": "4.94", "valid_num_updates": "52374", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint58.pt (epoch 58 @ 52374 updates) (writing took 3.093100070953369 seconds)
+{"epoch": 59, "train_loss": "3.207", "train_nll_loss": "1.691", "train_ppl": "3.23", "train_wps": "22147", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "53277", "train_lr": "0.000137003", "train_gnorm": "0.877", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "10874", "train_train_wall": "9398"}
+{"epoch": 59, "valid_loss": "3.869", "valid_nll_loss": "2.306", "valid_ppl": "4.94", "valid_num_updates": "53277", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint59.pt (epoch 59 @ 53277 updates) (writing took 1.7109169960021973 seconds)
+{"epoch": 60, "train_loss": "3.199", "train_nll_loss": "1.681", "train_ppl": "3.21", "train_wps": "22174", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "54180", "train_lr": "0.000135857", "train_gnorm": "0.883", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11057", "train_train_wall": "9556"}
+{"epoch": 60, "valid_loss": "3.868", "valid_nll_loss": "2.307", "valid_ppl": "4.95", "valid_num_updates": "54180", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint60.pt (epoch 60 @ 54180 updates) (writing took 1.7119555473327637 seconds)
+{"epoch": 61, "train_loss": "3.190", "train_nll_loss": "1.671", "train_ppl": "3.18", "train_wps": "22189", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "55083", "train_lr": "0.000134738", "train_gnorm": "0.882", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11239", "train_train_wall": "9715"}
+{"epoch": 61, "valid_loss": "3.886", "valid_nll_loss": "2.324", "valid_ppl": "5.01", "valid_num_updates": "55083", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint61.pt (epoch 61 @ 55083 updates) (writing took 1.7070200443267822 seconds)
+{"epoch": 62, "train_loss": "3.182", "train_nll_loss": "1.662", "train_ppl": "3.16", "train_wps": "22184", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "55986", "train_lr": "0.000133647", "train_gnorm": "0.883", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11421", "train_train_wall": "9873"}
+{"epoch": 62, "valid_loss": "3.863", "valid_nll_loss": "2.307", "valid_ppl": "4.95", "valid_num_updates": "55986", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint62.pt (epoch 62 @ 55986 updates) (writing took 1.7106966972351074 seconds)
+{"epoch": 63, "train_loss": "3.174", "train_nll_loss": "1.653", "train_ppl": "3.14", "train_wps": "22126", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "56889", "train_lr": "0.000132582", "train_gnorm": "0.887", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11604", "train_train_wall": "10032"}
+{"epoch": 63, "valid_loss": "3.889", "valid_nll_loss": "2.329", "valid_ppl": "5.02", "valid_num_updates": "56889", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint63.pt (epoch 63 @ 56889 updates) (writing took 1.7089133262634277 seconds)
+{"epoch": 64, "train_loss": "3.167", "train_nll_loss": "1.644", "train_ppl": "3.13", "train_wps": "22134", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "57792", "train_lr": "0.000131543", "train_gnorm": "0.887", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11787", "train_train_wall": "10191"}
+{"epoch": 64, "valid_loss": "3.901", "valid_nll_loss": "2.335", "valid_ppl": "5.04", "valid_num_updates": "57792", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint64.pt (epoch 64 @ 57792 updates) (writing took 1.7062382698059082 seconds)
+{"epoch": 65, "train_loss": "3.160", "train_nll_loss": "1.636", "train_ppl": "3.11", "train_wps": "22132", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "58695", "train_lr": "0.000130527", "train_gnorm": "0.889", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "11970", "train_train_wall": "10350"}
+{"epoch": 65, "valid_loss": "3.881", "valid_nll_loss": "2.318", "valid_ppl": "4.99", "valid_num_updates": "58695", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint65.pt (epoch 65 @ 58695 updates) (writing took 1.7110786437988281 seconds)
+{"epoch": 66, "train_loss": "3.153", "train_nll_loss": "1.628", "train_ppl": "3.09", "train_wps": "22136", "train_ups": "5", "train_wpb": "4373.327", "train_bsz": "177.452", "train_num_updates": "59598", "train_lr": "0.000129534", "train_gnorm": "0.892", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "12153", "train_train_wall": "10509"}
+{"epoch": 66, "valid_loss": "3.882", "valid_nll_loss": "2.324", "valid_ppl": "5.01", "valid_num_updates": "59598", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint66.pt (epoch 66 @ 59598 updates) (writing took 1.7110555171966553 seconds)
+{"epoch": 67, "train_loss": "3.125", "train_nll_loss": "1.596", "train_ppl": "3.02", "train_wps": "22147", "train_ups": "5", "train_wpb": "4389.973", "train_bsz": "183.201", "train_num_updates": "60000", "train_lr": "0.000129099", "train_gnorm": "0.886", "train_clip": "0.000", "train_oom": "0.000", "train_wall": "12237", "train_train_wall": "10580"}
+{"epoch": 67, "valid_loss": "3.881", "valid_nll_loss": "2.321", "valid_ppl": "5.00", "valid_num_updates": "60000", "valid_best_loss": "3.8626"}
+| saved checkpoint checkpoints/iwslt_d2_wo/checkpoint_last.pt (epoch 67 @ 60000 updates) (writing took 1.4089608192443848 seconds)
+| done training in 12240.2 seconds
